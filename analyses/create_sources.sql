@@ -1,0 +1,11 @@
+{{
+    codegen.generate_source(
+        schema_name="default",
+        database_name="ccastro",
+        table_names=[
+            "stripe_payments",
+            "jaffle_shop_orders",
+            "jaffle_shop_customers",
+        ],
+    )
+}}
