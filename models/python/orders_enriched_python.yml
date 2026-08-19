@@ -1,0 +1,35 @@
+models:
+  - name: orders_enriched_python
+    description: Demonstrates a dbt Python model on Databricks by enriching staged orders with derived year and completion fields.
+    config:
+      materialized: table
+      file_format: delta
+      submission_method: serverless_cluster
+      tags:
+        - python
+    columns:
+      - name: id
+        description: Unique identifier for each order.
+        data_tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Identifier for the customer who placed the order.
+        data_tests:
+          - not_null
+      - name: order_date
+        description: Date when the order was placed.
+        data_tests:
+          - not_null
+      - name: status
+        description: Current order status from the staged orders model.
+        data_tests:
+          - not_null
+      - name: order_year
+        description: Calendar year derived from the order date in PySpark.
+        data_tests:
+          - not_null
+      - name: is_completed
+        description: True when the order status is completed.
+        data_tests:
+          - not_null
